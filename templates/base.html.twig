@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		{% block stylesheets %}
+			<link rel="stylesheet" href="https://bootswatch.com/4/pulse/bootstrap.min.css">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+		{% endblock %}
+	</head>
+	<body>
+		{% include "Shared/_navbar.html.twig" %}
+		<div class="container pt-5">
+			{% for rubrique, messages in app.flashes %}
+				<div class="alert alert-{{rubrique}}">
+					{% for message in messages %}
+						<p>{{ message }}
+						</p>
+					{% endfor %}
+				</div>
+			{% endfor %}
+			{% block body %}{% endblock %}
+		</div>
+		{% block javascripts %}{% endblock %}
+	</body>
+</html>

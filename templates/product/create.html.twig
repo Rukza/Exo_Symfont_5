@@ -1,0 +1,64 @@
+{% extends "base.html.twig" %}
+
+{#{% form_theme formView _self %}
+utilisation de son propre théme de formulaire cf bas de code
+#}
+{#
+{% form_theme formView 'bootstrap_4_layout.html.twig' %}
+demande transfere dans twig.yaml
+#}
+	{% block title %}
+Création d'un produit
+{% endblock %}
+
+	{% block body %}
+		<h1>
+	Nouveau produit
+	</h1>
+
+	{{form_start(formView)}}
+
+	{{form_errors(formView)}}
+		<div class="row"> <div class="col">
+			{{form_row(formView.name)}}
+			{{form_row(formView.price)}}
+		</div>
+		<div class="col">
+			{{form_row(formView.mainPicture)}}
+			{{form_row(formView.category)}}
+			{{form_row(formView.shortDescription)}}
+		</div>
+	</div>
+
+	{#
+							{{form_widget(formView)}}
+							**version décomposé du form**
+							{{form_row(formView.name)}}
+							**version encore plus décomposé du champ name**
+							{{form_label(formView.name)}}
+							{{form_errors(formView.name)}}
+							{{form_widget(formView.name)}}
+							{{form_help(formView.name)}}
+							{{form_row(formView.shortDescription)}}
+							{{form_row(formView.price)}}
+							{{form_row(formView.category)}}
+							**version décomposé du form**
+							#}
+
+	<button type="submit" class="btn btn-primary">
+		<i class="fas fa-save"></i>
+		Créer le produit
+	</button>
+	{{form_end(formView)}}
+{% endblock %}
+
+{#
+{% block form_row %}
+	<div class="from-group">
+		{{form_label(form)}}
+		{{form_widget(form, {'attr' : {'class' : 'form-control'}})}}
+		{{form_help(form)}}
+		{{form_errors(form)}}
+	</div>
+{% endblock %}
+#}
